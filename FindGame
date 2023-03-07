@@ -1,0 +1,65 @@
+import java.util.*;
+class Find
+{
+	public void game()
+	{
+		Random r=new Random();
+		Scanner sc=new Scanner(System.in);
+		int val=r.nextInt(101);
+		System.out.println("Computer generated a random number.You should Find that number");
+		System.out.println("Enter the number of Findes that you want to try.Findes must be less than 10");
+		int ch=sc.nextInt();
+		while(ch>10)
+		{
+			System.out.println("*Sorry!! you crossed the limit of Chances.Please enter the chance below 10*");
+			ch=sc.nextInt();
+		}
+		System.out.println("Hey!!!you have "+ch+" chances to Find the number");
+		System.out.println("Find the number in between 1 to 100");
+		int score=100,i=0;
+		for(i=0;i<ch;i++)
+		{
+			System.out.println("Enter the number you Finded.Chance no"+(i+1));
+			int number=sc.nextInt();
+			if(number==val)
+			{
+				System.out.println("Hurray..!!! You won the Game");
+				System.out.println("Your score is: "+score);
+				break;
+			}
+			else if(number>val)
+			{
+				System.out.println("Your number is greater than the original number");
+			}
+			else
+			{
+				System.out.println("Your number is less than the original number");
+			}
+			score-=10;
+		} 
+		if(i>=ch)
+		{
+		    System.out.println("Alas!! You Lost the game");
+			System.out.println("The number is: "+val);
+			System.out.println("Your score is: 0");
+		}
+	}
+}
+class FindGame
+{
+public static void main(String args[])
+{
+	System.out.println("Welcome to the game...!!! Find the number");
+	Scanner sc=new Scanner(System.in);
+	Find g=new Find();
+	System.out.println("Are you ready to start the game ? : Yes/No");
+	String s=sc.nextLine();
+	while(s.equalsIgnoreCase("Yes")||s.equalsIgnoreCase("y"))
+	{
+		g.game();
+		System.out.println("Do you want to play again? Yes/No");
+		s=sc.nextLine();
+	}
+	System.out.println("Game closed!!!");
+}
+}
